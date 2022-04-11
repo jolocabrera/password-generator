@@ -22,6 +22,24 @@ function generatePassword() {
     chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
 
+  // lower case letters
+  var lowercase = window.confirm("Include lowercase letters?");
+  if (lowercase) {
+    chars += "abcdefghijklmnopqrstuvwxyz";
+  }
+
+  // numeric
+  var numbers = window.confirm("Include numbers in your password?");
+  if (numbers) {
+    chars += "123456789";
+  }
+
+  //special characters 
+  var specialChar = window.confirm("Include special characters in your password?");
+  if (specialChar) {
+    chars += "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  }
+
   for (i = 0; i < passwordLength; i++) {
     passwordHolder += chars.charAt(Math.floor(Math.random() * chars.length));
   }
