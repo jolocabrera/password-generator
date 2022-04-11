@@ -46,7 +46,8 @@ function generatePassword() {
     window.alert("You must select at least one password criteria to generate a password.")
     generatePassword();
   }
-debugger;
+
+  //generates password through for loop
   for (i = 0; i < passwordLength; i++) {
     passwordHolder += chars.charAt(Math.floor(Math.random() * chars.length));
   }
