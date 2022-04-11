@@ -16,16 +16,17 @@ function generatePassword() {
     }
   
   //selecting character sets (case, numbers, special characters)
-  // upper case letters
-  var uppercase = window.confirm("Include uppercase letters?");
-  if (uppercase) {
-    chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  }
 
   // lower case letters
-  var lowercase = window.confirm("Include lowercase letters?");
+  var lowercase = window.confirm("Include lowercase letters in your password?");
   if (lowercase) {
     chars += "abcdefghijklmnopqrstuvwxyz";
+  }
+
+  // upper case letters
+  var uppercase = window.confirm("Include uppercase letters in your password?");
+  if (uppercase) {
+    chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
 
   // numeric
@@ -37,9 +38,15 @@ function generatePassword() {
   //special characters 
   var specialChar = window.confirm("Include special characters in your password?");
   if (specialChar) {
-    chars += "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+    chars += "!#$%&()*+,-./:;<=>?@[\]^_`{|}~";
   }
 
+  //validation, at least one character type should be selected
+  if (!lowercase && !uppercase && !numbers && !specialChar) {
+    window.alert("You must select at least one password criteria to generate a password.")
+    generatePassword();
+  }
+debugger;
   for (i = 0; i < passwordLength; i++) {
     passwordHolder += chars.charAt(Math.floor(Math.random() * chars.length));
   }
